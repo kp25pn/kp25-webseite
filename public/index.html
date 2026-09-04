@@ -7,73 +7,481 @@
   <meta name="theme-color" content="#164aa3">
   <title>KP25 | Kinderpfleger*in in Pößneck</title>
   <style>
-    :root { --blue:#164aa3; --dark:#172033; --violet:#6d51c7; --muted:#687085; --line:#e6e8ee; --canvas:#f6f7fb; --white:#fff; --max:1080px; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--dark); background:var(--canvas); font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; line-height:1.55; }
-    a { color:inherit; }
-    .container { width:min(calc(100% - 32px),var(--max)); margin:auto; }
-    header { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.95); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
-    nav { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
-    .brand { text-decoration:none; font-size:1.18rem; font-weight:850; letter-spacing:-.04em; }
-    .brand span { color:var(--violet); }
-    .links { display:flex; gap:18px; align-items:center; }
-    .links a { color:#414a5d; text-decoration:none; font-weight:700; font-size:.9rem; }
-    .button { display:inline-flex; align-items:center; justify-content:center; padding:11px 16px; border-radius:10px; background:var(--blue); color:#fff!important; font-weight:750!important; text-decoration:none; transition:.2s ease; }
-    .button:hover { transform:translateY(-1px); background:#0e3374; }
-    .hero { padding:78px 0 64px; background:#fff; }
-    .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:64px; align-items:center; }
-    .badge { display:inline-block; padding:6px 10px; border-radius:99px; background:#eaf1ff; color:#0e3374; font-size:.8rem; font-weight:800; }
-    h1 { margin:14px 0 12px; font-size:clamp(3rem,8vw,5.7rem); line-height:.92; letter-spacing:-.08em; }
-    h2 { margin:0 0 10px; font-size:clamp(1.9rem,4vw,2.7rem); letter-spacing:-.05em; line-height:1.1; }
-    h3,p { margin-top:0; }
-    .lead { max-width:560px; color:var(--muted); font-size:1.08rem; }
-    .tags { display:flex; flex-wrap:wrap; gap:9px; margin:24px 0 28px; }
-    .tags span { padding:7px 10px; border:1px solid var(--line); border-radius:9px; color:#495267; font-size:.88rem; font-weight:650; }
-    .logo { overflow:hidden; aspect-ratio:1; border-radius:24px; box-shadow:0 18px 45px rgba(24,56,128,.2); background:linear-gradient(140deg,var(--blue),var(--violet)); }
-    .logo img { display:block; width:100%; height:100%; object-fit:cover; }
-    section { padding:74px 0; }
-    .section-label { margin:0 0 6px; color:var(--violet); font-size:.8rem; letter-spacing:.06em; font-weight:850; text-transform:uppercase; }
-    .intro { max-width:680px; margin-bottom:30px; color:var(--muted); }
-    .progress-section { background:#fff; }
-    .progress-card { padding:clamp(22px,5vw,44px); border:1px solid var(--line); border-radius:18px; background:#fff; box-shadow:0 12px 30px rgba(23,32,51,.08); }
-    .progress-top { display:flex; align-items:end; justify-content:space-between; gap:20px; }
-    .small-label { color:var(--muted); font-size:.9rem; font-weight:700; }
-    .percent { color:var(--blue); font-size:clamp(3.5rem,10vw,6rem); line-height:.95; font-weight:850; letter-spacing:-.08em; }
-    .dates { color:var(--muted); text-align:right; font-size:.9rem; }
-    .bar { height:14px; overflow:hidden; margin:28px 0 25px; border-radius:999px; background:#e9edf5; }
-    .bar div { width:0; height:100%; border-radius:inherit; background:linear-gradient(90deg,var(--blue),var(--violet)); transition:width .6s ease; }
-    .countdown { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-    .time { padding:14px 8px; border:1px solid var(--line); border-radius:12px; background:#fafbfe; text-align:center; }
-    .time strong { display:block; font-size:clamp(1.25rem,3vw,1.7rem); line-height:1.1; }
-    .time span { color:var(--muted); font-size:.78rem; font-weight:700; }
-    .milestones { display:grid; grid-template-columns:repeat(5,1fr); margin-top:38px; }
-    .milestone { position:relative; padding:25px 12px 0; border-top:3px solid #dbe0e9; color:#7d8594; }
-    .milestone:before { content:""; position:absolute; top:-9px; left:0; width:12px; height:12px; border:3px solid #dbe0e9; border-radius:50%; background:#fff; }
-    .milestone.active { color:#0e3374; border-color:var(--blue); }
-    .milestone.active:before { border-color:var(--blue); background:var(--blue); }
-    .milestone strong { display:block; font-size:.9rem; }
-    .milestone small { font-size:.76rem; }
-    .info { background:#f0f3f9; }
-    .empty { display:grid; place-items:center; min-height:220px; padding:30px; border:1px dashed #cbd3e0; border-radius:18px; background:rgba(255,255,255,.7); text-align:center; }
-    .empty .smile { color:var(--violet); font-size:2rem; }
-    .empty h3 { margin:6px 0 4px; }
-    .empty p { margin:0; color:var(--muted); }
-    .about { display:grid; grid-template-columns:1.2fr .8fr; gap:22px; }
-    .card { padding:30px; border:1px solid var(--line); border-radius:18px; background:#fff; }
-    .card p { margin:0; color:#4e586c; }
-    .school { background:var(--blue); color:#fff; }
-    .school p { margin:0 0 20px; color:rgba(255,255,255,.82); }
-    .school .button { background:#fff; color:var(--blue)!important; }
-    .instagram { color:#fff; background:var(--dark); }
-    .instagram .container { display:flex; align-items:center; justify-content:space-between; gap:25px; }
-    .instagram .section-label { color:#bcaeff; }
-    .instagram p { margin:0; color:#cbd2e1; }
-    .instagram .button { background:var(--violet); white-space:nowrap; }
-    footer { padding:26px 0; background:#101725; color:#aeb7c9; font-size:.85rem; }
-    .footer { display:flex; justify-content:space-between; gap:16px; }
-    footer a { color:#fff; }
-    @media (max-width:760px) { .links a:not(.button) { display:none; } .hero { padding:54px 0 48px; } .hero-grid,.about { grid-template-columns:1fr; gap:34px; } .logo { width:min(84vw,390px); margin:auto; } section { padding:56px 0; } .progress-top { display:block; } .dates { margin-top:10px; text-align:left; } .countdown { grid-template-columns:repeat(2,1fr); } .milestones { grid-template-columns:1fr; margin-left:8px; } .milestone { padding:0 0 19px 24px; border-top:0; border-left:3px solid #dbe0e9; } .milestone:before { top:0; left:-9px; } .instagram .container,.footer { align-items:flex-start; flex-direction:column; } }
+    :root {
+      --blue: #164aa3;
+      --blue-dark: #0e3374;
+      --dark: #172033;
+      --violet: #6d51c7;
+      --muted: #687085;
+      --line: #e6e8ee;
+      --canvas: #f6f7fb;
+      --white: #fff;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--dark);
+      background: var(--canvas);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: auto; }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      text-decoration: none;
+      font-size: 1.18rem;
+      font-weight: 850;
+      letter-spacing: -0.04em;
+    }
+    .brand span { color: var(--violet); }
+    .links { display: flex; gap: 18px; align-items: center; }
+    .links a {
+      color: #414a5d;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 10px;
+      background: var(--blue);
+      color: #fff !important;
+      font-weight: 750 !important;
+      text-decoration: none;
+      transition: .2s ease;
+    }
+    .button:hover {
+      transform: translateY(-1px);
+      background: var(--blue-dark);
+    }
+
+    /* Hero */
+    .hero { padding: 78px 0 64px; background: #fff; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 99px;
+      background: #eaf1ff;
+      color: #0e3374;
+      font-size: .8rem;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 14px 0 12px;
+      font-size: clamp(3rem, 8vw, 5.7rem);
+      line-height: .92;
+      letter-spacing: -0.08em;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+    }
+    h3, p { margin-top: 0; }
+    .lead {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin: 24px 0 28px; }
+    .tags span {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: #495267;
+      font-size: .88rem;
+      font-weight: 650;
+    }
+    .logo {
+      overflow: hidden;
+      aspect-ratio: 1;
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(24,56,128,.2);
+      background: linear-gradient(140deg, var(--blue), var(--violet));
+    }
+    .logo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    section { padding: 74px 0; }
+    .section-label {
+      margin: 0 0 6px;
+      color: var(--violet);
+      font-size: .8rem;
+      letter-spacing: .06em;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+    .intro {
+      max-width: 680px;
+      margin-bottom: 30px;
+      color: var(--muted);
+    }
+
+    /* Fortschritt – neue, geilere Anzeige */
+    .progress-section { background: #fff; }
+
+    .progress-layout {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .progress-card {
+      position: relative;
+      padding: clamp(22px, 5vw, 44px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(23,32,51,.08);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+    }
+
+    .progress-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .small-label {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .percent {
+      color: var(--blue);
+      font-size: clamp(3.5rem, 10vw, 6rem);
+      line-height: .95;
+      font-weight: 850;
+      letter-spacing: -0.08em;
+    }
+
+    .dates {
+      color: var(--muted);
+      text-align: right;
+      font-size: .9rem;
+    }
+
+    .bar-wrap {
+      position: relative;
+      height: 14px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e9edf5;
+      box-shadow: inset 0 1px 2px rgba(15,23,42,.06);
+    }
+    .bar {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--violet));
+      transition: width .6s ease;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .time {
+      padding: 14px 8px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fafbfe;
+      text-align: center;
+    }
+    .time strong {
+      display: block;
+      font-size: clamp(1.25rem, 3vw, 1.7rem);
+      line-height: 1.1;
+    }
+    .time span {
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    /* Rechter Block: Ring + Meilensteine */
+    .progress-visual {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 22px;
+    }
+
+    .ring-card {
+      padding: clamp(18px, 4vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(23,32,51,.08);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .ring-info h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+    .ring-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .ring {
+      position: relative;
+      width: clamp(110px, 22vw, 160px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .ring svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: #e9edf5;
+      stroke-width: 10;
+    }
+    .ring-fill {
+      fill: none;
+      stroke: url(#grad);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 440;
+      stroke-dashoffset: 440;
+      transition: stroke-dashoffset .6s ease;
+    }
+
+    .ring-text {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+    .ring-text strong {
+      display: block;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: var(--blue);
+      line-height: 1;
+    }
+    .ring-text span {
+      display: block;
+      font-size: .7rem;
+      color: var(--muted);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(23,32,51,.08);
+    }
+
+    .milestone {
+      position: relative;
+      padding: 25px 12px 0;
+      border-top: 3px solid #dbe0e9;
+      color: #7d8594;
+    }
+    .milestone:before {
+      content: "";
+      position: absolute;
+      top: -9px;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      border: 3px solid #dbe0e9;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .milestone.active {
+      color: #0e3374;
+      border-color: var(--blue);
+    }
+    .milestone.active:before {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+    .milestone strong {
+      display: block;
+      font-size: .9rem;
+    }
+    .milestone small {
+      font-size: .76rem;
+    }
+
+    /* Info */
+    .info { background: #f0f3f9; }
+    .empty {
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      padding: 30px;
+      border: 1px dashed #cbd3e0;
+      border-radius: 18px;
+      background: rgba(255,255,255,.7);
+      text-align: center;
+    }
+    .empty .smile { color: var(--violet); font-size: 2rem; }
+    .empty h3 { margin: 6px 0 4px; }
+    .empty p { margin: 0; color: var(--muted); }
+
+    /* Über uns */
+    .about {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+    }
+    .card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+    .card p { margin: 0; color: #4e586c; }
+
+    .school {
+      background: var(--blue);
+      color: #fff;
+    }
+    .school p {
+      margin: 0 0 20px;
+      color: rgba(255,255,255,.82);
+    }
+    .school .button {
+      background: #fff;
+      color: var(--blue) !important;
+    }
+
+    /* Instagram */
+    .instagram {
+      color: #fff;
+      background: var(--dark);
+    }
+    .instagram .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+    .instagram .section-label { color: #bcaeff; }
+    .instagram p {
+      margin: 0;
+      color: #cbd2e1;
+    }
+    .instagram .button {
+      background: var(--violet);
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    footer {
+      padding: 26px 0;
+      background: #101725;
+      color: #aeb7c9;
+      font-size: .85rem;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    footer a { color: #fff; }
+
+    @media (max-width: 900px) {
+      .progress-layout {
+        grid-template-columns: 1fr;
+      }
+      .ring-card {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+      .ring {
+        margin: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .links a:not(.button) { display: none; }
+      .hero { padding: 54px 0 48px; }
+      .hero-grid, .about { grid-template-columns: 1fr; gap: 34px; }
+      .logo { width: min(84vw, 390px); margin: auto; }
+      section { padding: 56px 0; }
+      .progress-top { display: block; }
+      .dates { margin-top: 10px; text-align: left; }
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+      .milestones { grid-template-columns: 1fr; margin-left: 8px; }
+      .milestone {
+        padding: 0 0 19px 24px;
+        border-top: 0;
+        border-left: 3px solid #dbe0e9;
+      }
+      .milestone:before {
+        top: 0;
+        left: -9px;
+      }
+      .instagram .container, .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
@@ -96,7 +504,10 @@
           <span class="badge">Euro Akademie Pößneck</span>
           <h1>KP25</h1>
           <p class="lead">Kinderpfleger*in – staatlich geprüft. Gemeinsam auf dem Weg zum Abschluss.</p>
-          <div class="tags"><span>01.08.2026 – 31.07.2028</span><span>Pößneck, Thüringen</span></div>
+          <div class="tags">
+            <span>01.08.2026 – 31.07.2028</span>
+            <span>Pößneck, Thüringen</span>
+          </div>
           <a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Instagram @kp25_pn</a>
         </div>
         <div class="logo"><img src="KP25.jpeg" alt="KP25 – Profilbild der Klasse Kinderpfleger*in"></div>
@@ -108,47 +519,216 @@
         <p class="section-label">Ausbildungszeit</p>
         <h2>Unser Weg bis 2028</h2>
         <p class="intro">Seit dem 01. August 2026 sind wir gemeinsam unterwegs – bis zum Abschluss im Juli 2028.</p>
-        <div class="progress-card">
-          <div class="progress-top"><div><div class="small-label">Fortschritt der Ausbildungszeit</div><div id="percent" class="percent">0,00 %</div></div><div class="dates">01.08.2026<br>bis 31.07.2028</div></div>
-          <div class="bar" role="progressbar" aria-label="Fortschritt der Ausbildungszeit" aria-valuemin="0" aria-valuemax="100"><div id="bar"></div></div>
-          <div class="countdown"><div class="time"><strong id="days">0</strong><span>Tage</span></div><div class="time"><strong id="hours">00</strong><span>Stunden</span></div><div class="time"><strong id="minutes">00</strong><span>Minuten</span></div><div class="time"><strong id="seconds">00</strong><span>Sekunden</span></div></div>
+
+        <div class="progress-layout">
+          <!-- Linke Spalte: große Prozent + Balken + Countdown -->
+          <div class="progress-card">
+            <div class="progress-top">
+              <div>
+                <div class="small-label">Fortschritt der Ausbildungszeit</div>
+                <div id="percent" class="percent">0,00 %</div>
+              </div>
+              <div class="dates">
+                01.08.2026<br>
+                bis 31.07.2028
+              </div>
+            </div>
+
+            <div class="bar-wrap" role="progressbar" aria-label="Fortschritt der Ausbildungszeit" aria-valuemin="0" aria-valuemax="100">
+              <div id="bar" class="bar"></div>
+            </div>
+
+            <div class="countdown">
+              <div class="time">
+                <strong id="days">0</strong>
+                <span>Tage</span>
+              </div>
+              <div class="time">
+                <strong id="hours">00</strong>
+                <span>Stunden</span>
+              </div>
+              <div class="time">
+                <strong id="minutes">00</strong>
+                <span>Minuten</span>
+              </div>
+              <div class="time">
+                <strong id="seconds">00</strong>
+                <span>Sekunden</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rechte Spalte: Ring + Meilensteine -->
+          <div class="progress-visual">
+            <div class="ring-card">
+              <div class="ring-info">
+                <h3>Live‑Fortschritt</h3>
+                <p>So viel der Ausbildung liegt bereits hinter uns.</p>
+              </div>
+              <div class="ring">
+                <svg viewBox="0 0 160 160" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="grad" x1="0" x2="1" y1="0" y2="0">
+                      <stop offset="0%" stop-color="#164aa3"/>
+                      <stop offset="100%" stop-color="#6d51c7"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="ring-bg" cx="80" cy="80" r="70"/>
+                  <circle id="ringFill" class="ring-fill" cx="80" cy="80" r="70"/>
+                </svg>
+                <div class="ring-text">
+                  <strong id="ringPercent">0 %</strong>
+                  <span>geschafft</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="milestones">
+              <div class="milestone" data-value="0">
+                <strong>Start</strong>
+                <small>01.08.2026</small>
+              </div>
+              <div class="milestone" data-value="25">
+                <strong>25 %</strong>
+                <small>Erste Etappe</small>
+              </div>
+              <div class="milestone" data-value="50">
+                <strong>50 %</strong>
+                <small>Halbzeit</small>
+              </div>
+              <div class="milestone" data-value="75">
+                <strong>75 %</strong>
+                <small>Endspurt</small>
+              </div>
+              <div class="milestone" data-value="100">
+                <strong>100 %</strong>
+                <small>Abschluss</small>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="milestones"><div class="milestone" data-value="0"><strong>Start</strong><small>01.08.2026</small></div><div class="milestone" data-value="25"><strong>25 %</strong><small>Erste Etappe</small></div><div class="milestone" data-value="50"><strong>50 %</strong><small>Halbzeit</small></div><div class="milestone" data-value="75"><strong>75 %</strong><small>Endspurt</small></div><div class="milestone" data-value="100"><strong>100 %</strong><small>Abschluss</small></div></div>
       </div>
     </section>
 
-    <section class="info" id="infos"><div class="container"><p class="section-label">KP25</p><h2>Aktuelle Infos</h2><p class="intro">Neuigkeiten, Termine und wichtige Hinweise für KP25.</p><div class="empty"><div><div class="smile">☺</div><h3>Aktuell gibt es keine neuen Infos 🙂</h3><p>Schau bald wieder vorbei.</p></div></div></div></section>
+    <section class="info" id="infos">
+      <div class="container">
+        <p class="section-label">KP25</p>
+        <h2>Aktuelle Infos</h2>
+        <p class="intro">Neuigkeiten, Termine und wichtige Hinweise für KP25.</p>
+        <div class="empty">
+          <div>
+            <div class="smile">☺</div>
+            <h3>Aktuell gibt es keine neuen Infos 🙂</h3>
+            <p>Schau bald wieder vorbei.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section id="ueber-uns"><div class="container"><p class="section-label">Die Klasse</p><h2>Über KP25</h2><div class="about"><article class="card"><p>KP25 ist die Klasse der Ausbildung Kinderpfleger*in an der Euro Akademie Pößneck. Von August 2026 bis Juli 2028 erleben wir gemeinsam Unterricht, Praktika, Prüfungen, Herausforderungen und viele besondere Momente.</p></article><aside class="card school"><h3>Euro Akademie Pößneck</h3><p>Pößneck, Thüringen</p><a class="button" href="https://www.euroakademie.de/poessneck" target="_blank" rel="noopener noreferrer">Zur Euro Akademie Pößneck</a></aside></div></div></section>
+    <section id="ueber-uns">
+      <div class="container">
+        <p class="section-label">Die Klasse</p>
+        <h2>Über KP25</h2>
+        <div class="about">
+          <article class="card">
+            <p>
+              KP25 ist die Klasse der Ausbildung Kinderpfleger*in an der Euro Akademie Pößneck.
+              Von August 2026 bis Juli 2028 erleben wir gemeinsam Unterricht, Praktika, Prüfungen,
+              Herausforderungen und viele besondere Momente.
+            </p>
+          </article>
+          <aside class="card school">
+            <h3>Euro Akademie Pößneck</h3>
+            <p>Pößneck, Thüringen</p>
+            <a class="button" href="https://www.euroakademie.de/poessneck" target="_blank" rel="noopener noreferrer">
+              Zur Euro Akademie Pößneck
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
 
-    <section class="instagram"><div class="container"><div><p class="section-label">@kp25_pn</p><h2>Folge unserem Weg</h2><p>Eindrücke aus dem Klassenalltag und aktuelle Beiträge findest du auf Instagram.</p></div><a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Instagram öffnen</a></div></section>
+    <section class="instagram">
+      <div class="container">
+        <div>
+          <p class="section-label">@kp25_pn</p>
+          <h2>Folge unserem Weg</h2>
+          <p>Eindrücke aus dem Klassenalltag und aktuelle Beiträge findest du auf Instagram.</p>
+        </div>
+        <a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">
+          Instagram öffnen
+        </a>
+      </div>
+    </section>
   </main>
 
-  <footer><div class="container footer"><div>KP25 · Euro Akademie Pößneck<br>01.08.2026 – 31.07.2028<br><small>Private Klassen-Webseite. Nicht die offizielle Webseite der Euro Akademie.</small></div><div><a href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Instagram @kp25_pn</a></div></div></footer>
+  <footer>
+    <div class="container footer">
+      <div>
+        KP25 · Euro Akademie Pößneck<br>
+        01.08.2026 – 31.07.2028<br>
+        <small>Private Klassen-Webseite. Nicht die offizielle Webseite der Euro Akademie.</small>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">
+          Instagram @kp25_pn
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     (() => {
       const start = new Date("2026-08-01T00:00:00+02:00").getTime();
       const end = new Date("2028-07-31T23:59:59+02:00").getTime();
+
       const percent = document.getElementById("percent");
       const bar = document.getElementById("bar");
       const progressElement = bar.parentElement;
       const milestones = document.querySelectorAll(".milestone");
-      const format = new Intl.NumberFormat("de-DE", { minimumFractionDigits:2, maximumFractionDigits:2 });
+
+      const ringFill = document.getElementById("ringFill");
+      const ringPercent = document.getElementById("ringPercent");
+
+      // circumference für r=70: 2 * π * 70 ≈ 439.8229715
+      const circumference = 2 * Math.PI * 70;
+      ringFill.style.strokeDasharray = `${circumference}`;
+      ringFill.style.strokeDashoffset = `${circumference}`;
+
+      const format = new Intl.NumberFormat("de-DE", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
       function update() {
         const now = Date.now();
         const value = Math.min(100, Math.max(0, ((now - start) / (end - start)) * 100));
         const left = Math.max(0, end - now);
         const totalSeconds = Math.floor(left / 1000);
+
+        // Text + Balken
         percent.textContent = format.format(value) + " %";
         bar.style.width = value + "%";
         progressElement.setAttribute("aria-valuenow", value.toFixed(2));
+
+        // Countdown
         document.getElementById("days").textContent = Math.floor(totalSeconds / 86400).toLocaleString("de-DE");
-        document.getElementById("hours").textContent = String(Math.floor(totalSeconds % 86400 / 3600)).padStart(2,"0");
-        document.getElementById("minutes").textContent = String(Math.floor(totalSeconds % 3600 / 60)).padStart(2,"0");
-        document.getElementById("seconds").textContent = String(totalSeconds % 60).padStart(2,"0");
-        milestones.forEach(item => { const mark = Number(item.dataset.value); item.classList.toggle("active", value >= mark && (mark !== 0 || now >= start)); });
+        document.getElementById("hours").textContent = String(Math.floor(totalSeconds % 86400 / 3600)).padStart(2, "0");
+        document.getElementById("minutes").textContent = String(Math.floor(totalSeconds % 3600 / 60)).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(totalSeconds % 60).padStart(2, "0");
+
+        // Meilensteine
+        milestones.forEach(item => {
+          const mark = Number(item.dataset.value);
+          item.classList.toggle("active", value >= mark && (mark !== 0 || now >= start));
+        });
+
+        // Ring
+        const offset = circumference - (value / 100) * circumference;
+        ringFill.style.strokeDashoffset = offset;
+        ringPercent.textContent = format.format(value) + " %";
       }
+
       update();
       setInterval(update, 1000);
     })();
