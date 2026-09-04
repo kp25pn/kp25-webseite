@@ -6,6 +6,12 @@
   <meta name="description" content="Die Klassen-Webseite der KP25 an der Euro Akademie Pößneck. Gemeinsam auf dem Weg zum Abschluss 2028.">
   <meta name="theme-color" content="#164aa3">
   <title>KP25 | Kinderpfleger*in in Pößneck</title>
+
+  <!-- Google Fonts: Anton -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --blue: #164aa3;
@@ -21,11 +27,13 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       color: var(--dark);
       background: var(--canvas);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      /* Canva Sans als Haupt-Schriftart */
+      font-family: "Canva Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -50,13 +58,17 @@
       justify-content: space-between;
       gap: 18px;
     }
+
     .brand {
       text-decoration: none;
-      font-size: 1.18rem;
+      font-size: 1.4rem;
       font-weight: 850;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.02em;
+      /* Anton nur für das Logo */
+      font-family: "Anton", sans-serif;
     }
     .brand span { color: var(--violet); }
+
     .links { display: flex; gap: 18px; align-items: center; }
     .links a {
       color: #414a5d;
@@ -154,7 +166,7 @@
       color: var(--muted);
     }
 
-    /* Fortschritt – neue, geilere Anzeige */
+    /* Fortschritt */
     .progress-section { background: #fff; }
 
     .progress-layout {
@@ -690,7 +702,6 @@
       const ringFill = document.getElementById("ringFill");
       const ringPercent = document.getElementById("ringPercent");
 
-      // circumference für r=70: 2 * π * 70 ≈ 439.8229715
       const circumference = 2 * Math.PI * 70;
       ringFill.style.strokeDasharray = `${circumference}`;
       ringFill.style.strokeDashoffset = `${circumference}`;
@@ -706,24 +717,20 @@
         const left = Math.max(0, end - now);
         const totalSeconds = Math.floor(left / 1000);
 
-        // Text + Balken
         percent.textContent = format.format(value) + " %";
         bar.style.width = value + "%";
         progressElement.setAttribute("aria-valuenow", value.toFixed(2));
 
-        // Countdown
         document.getElementById("days").textContent = Math.floor(totalSeconds / 86400).toLocaleString("de-DE");
         document.getElementById("hours").textContent = String(Math.floor(totalSeconds % 86400 / 3600)).padStart(2, "0");
         document.getElementById("minutes").textContent = String(Math.floor(totalSeconds % 3600 / 60)).padStart(2, "0");
         document.getElementById("seconds").textContent = String(totalSeconds % 60).padStart(2, "0");
 
-        // Meilensteine
         milestones.forEach(item => {
           const mark = Number(item.dataset.value);
           item.classList.toggle("active", value >= mark && (mark !== 0 || now >= start));
         });
 
-        // Ring
         const offset = circumference - (value / 100) * circumference;
         ringFill.style.strokeDashoffset = offset;
         ringPercent.textContent = format.format(value) + " %";
