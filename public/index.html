@@ -24,6 +24,8 @@
       --canvas: #f6f7fb;
       --white: #fff;
       --max: 1080px;
+      --discord: #5865f2;
+      --discord-hover: #4752c4;
     }
 
     * { box-sizing: border-box; }
@@ -91,6 +93,12 @@
     .button:hover {
       transform: translateY(-1px);
       background: var(--cyan-dark);
+    }
+    .button-discord {
+      background: var(--discord);
+    }
+    .button-discord:hover {
+      background: var(--discord-hover);
     }
 
     /* Hero */
@@ -160,7 +168,7 @@
       color: var(--green); /* statt lila */
       font-size: .8rem;
       letter-spacing: .06em;
-      font-weight: 850;
+      font-weight: 800;
       text-transform: uppercase;
     }
     .intro {
@@ -450,6 +458,94 @@
       white-space: nowrap;
     }
 
+    /* Discord Section */
+    .discord {
+      background: #0b0f14;
+      color: #fff;
+    }
+    .discord .section-label {
+      color: var(--green);
+    }
+    .discord-intro {
+      max-width: 680px;
+      color: #cbd2e1;
+    }
+    .discord-embed {
+      background: #2f3136;
+      border-radius: 12px;
+      padding: 18px;
+      max-width: 460px;
+      border-left: 4px solid var(--discord);
+    }
+    .discord-embed-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .discord-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--discord);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .discord-embed-title {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+    .discord-embed-subtitle {
+      color: #b9bbbe;
+      font-size: 0.8rem;
+    }
+    .discord-embed-body {
+      margin: 8px 0 12px;
+      font-size: 0.9rem;
+      color: #dcddde;
+    }
+    .discord-embed-body p {
+      margin: 4px 0;
+    }
+    .discord-online {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #3ba55c;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+    .discord-dot {
+      width: 8px;
+      height: 8px;
+      background: #3ba55c;
+      border-radius: 50%;
+    }
+    .discord-join-btn {
+      display: inline-block;
+      background: var(--discord);
+      color: #fff !important;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .discord-join-btn:hover {
+      background: var(--discord-hover);
+    }
+    .discord-server-id {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #b9bbbe;
+    }
+
     /* Footer */
     footer {
       padding: 26px 0;
@@ -513,6 +609,7 @@
         <a href="#infos">Infos</a>
         <a href="#ueber-uns">Über uns</a>
         <a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="button button-discord" href="https://discord.gg/gMMTYBdHrp" target="_blank" rel="noopener noreferrer">Discord</a>
       </div>
     </nav>
   </header>
@@ -668,6 +765,48 @@
       </div>
     </section>
 
+    <!-- Discord Section -->
+    <section class="discord" id="discord">
+      <div class="container">
+        <p class="section-label">Discord</p>
+        <h2>Unser Klassenserver</h2>
+        <p class="discord-intro">
+          Auf unserem Discord-Server tauschen wir uns zu Hausaufgaben, Lernmaterial, Terminen und allem rund um die Klasse aus.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; margin-top: 24px; flex-wrap: wrap;">
+          <div>
+            <div class="discord-embed">
+              <div class="discord-embed-header">
+                <div class="discord-icon">KP</div>
+                <div>
+                  <div class="discord-embed-title">KP 25 | Euro Akademie Pößneck</div>
+                  <div class="discord-embed-subtitle">Offizieller Klassenserver</div>
+                </div>
+              </div>
+              <div class="discord-embed-body">
+                <p>Hier findest du:</p>
+                <p>• Hausaufgaben & Lernmaterial</p>
+                <p>• Klassenarbeiten & Termine</p>
+                <p>• Austausch & gegenseitige Hilfe</p>
+              </div>
+              <div class="discord-online">
+                <span class="discord-dot"></span>
+                <span>Server ist aktiv</span>
+              </div>
+              <a href="https://discord.gg/gMMTYBdHrp" target="_blank" rel="noopener" class="discord-join-btn">Server beitreten</a>
+              <div class="discord-server-id">Server-ID: 1546594015942807585</div>
+            </div>
+          </div>
+          <div>
+            <a class="button button-discord" href="https://discord.gg/gMMTYBdHrp" target="_blank" rel="noopener noreferrer">
+              Jetzt beitreten
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="instagram">
       <div class="container">
         <div>
@@ -689,9 +828,15 @@
         01.08.2026 – 31.07.2028<br>
         <small>Private Klassen-Webseite. Nicht die offizielle Webseite der Euro Akademie.</small>
       </div>
-      <div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <a href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">
           Instagram @kp25_pn
+        </a>
+        <a href="https://github.com/kp25pn/kp25-webseite" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+        <a href="datenschutz-discord.html">
+          Datenschutz – Discord
         </a>
       </div>
     </div>
