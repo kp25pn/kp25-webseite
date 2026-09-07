@@ -64,11 +64,14 @@
 
     .brand {
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 400;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       font-family: "Anton", sans-serif;
       color: var(--cyan-dark);
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .brand span { color: var(--green); }
@@ -400,7 +403,7 @@
       line-height: 1;
     }
 
-    /* Neue vertikale Meilensteine nach Screenshot-Vorlage */
+    /* Vertikale Meilensteine */
     .milestones {
       display: flex;
       flex-direction: column;
@@ -422,7 +425,6 @@
       padding-bottom: 0;
     }
 
-    /* Der Kreis (Node) */
     .milestone::before {
       content: "";
       position: absolute;
@@ -438,7 +440,6 @@
       box-sizing: border-box;
     }
 
-    /* Die Verbindungslinie */
     .milestone::after {
       content: "";
       position: absolute;
@@ -455,7 +456,6 @@
       display: none;
     }
 
-    /* Aktiver Status */
     .milestone.active {
       color: var(--dark);
     }
@@ -485,13 +485,41 @@
       color: var(--muted);
     }
 
-    /* Info Board (Überarbeitet mit Inhalten) */
+    /* Info Board (Wieder leer) */
     .info { background: #fff; }
 
     .board-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
+    }
+
+    .empty-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      padding: 40px;
+      border: 2px dashed #dbe0e9;
+      border-radius: 24px;
+      background: var(--canvas);
+      text-align: center;
+    }
+
+    .empty-card .smile { 
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+    
+    .empty-card h3 { margin: 0 0 6px; color: var(--dark); font-weight: 800; font-size: 1.1rem; }
+    .empty-card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    /* Über uns */
+    .about {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 30px;
     }
 
     .card {
@@ -501,32 +529,11 @@
       background: #fff;
       box-shadow: 0 10px 40px rgba(44, 52, 64, 0.05);
     }
-    
-    .info .card {
-      background: var(--canvas);
-      box-shadow: none;
-      border: 1px solid var(--line);
-    }
-
-    .info .card h3 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
 
     .card p {
       margin: 0;
       color: var(--muted);
       font-size: 1.05rem;
-    }
-
-    /* Über uns */
-    .about {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 30px;
     }
 
     .school {
@@ -680,7 +687,6 @@
                       <stop offset="100%" stop-color="#7dd855"/>
                     </linearGradient>
                   </defs>
-                  <!-- 70 radius in 160 box -> circum 439.8 -->
                   <circle class="ring-bg" cx="80" cy="80" r="70"/>
                   <circle id="ringFill" class="ring-fill" cx="80" cy="80" r="70"/>
                 </svg>
@@ -690,7 +696,6 @@
               </div>
             </div>
 
-            <!-- Vertikaler Zeitstrahl (Screenshot Vorlage) -->
             <div class="milestones">
               <div class="milestone" data-value="0">
                 <strong>Start</strong>
@@ -721,17 +726,19 @@
     <section class="info" id="infos">
       <div class="container">
         <p class="section-label">Klassen-Pinnwand</p>
-        <h2>Aktuelles & Termine</h2>
-        <p class="intro">Alles Wichtige auf einen Blick: Praxisblöcke, Unterlagen und Infos für unseren Schulalltag.</p>
+        <h2>Was gibt's Neues?</h2>
+        <p class="intro">Alles Wichtige auf einen Blick: Termine, Ausflüge oder einfach nur Infos, die wir nicht vergessen dürfen.</p>
         
         <div class="board-grid">
-          <div class="card">
-            <h3>📅 Nächster Praxisblock</h3>
-            <p>Unser nächster Praxiseinsatz in den Einrichtungen startet planmäßig. Denkt rechtzeitig an eure Beobachtungs- und Reflexionsbögen!</p>
+          <div class="empty-card">
+            <div class="smile">☕</div>
+            <h3>Hier ist es gerade noch ruhig!</h3>
+            <p>Sobald es spannende News oder neue Termine gibt, pinnen wir sie hier an.</p>
           </div>
-          <div class="card">
-            <h3>📚 Unterrichtsmaterial</h3>
-            <p>Die aktuellen Skripte für Psychologie und Pädagogik sind nun im Portal verfügbar. Bitte bis zur nächsten Stunde durchlesen.</p>
+          <div class="empty-card">
+            <div class="smile">📌</div>
+            <h3>Nichts zu verkünden</h3>
+            <p>Aktuell stehen keine klasseninternen Ankündigungen an.</p>
           </div>
         </div>
       </div>
