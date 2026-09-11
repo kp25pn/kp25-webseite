@@ -22,6 +22,12 @@
       --canvas: #f8fafc;
       --white: #fff;
       --max: 1080px;
+
+      /* Herbst-Akzente */
+      --autumn-orange: #e67e22;
+      --autumn-red: #c0392b;
+      --autumn-yellow: #f39c12;
+      --halloween-bg: #1a1a1a;
     }
 
     * { box-sizing: border-box; }
@@ -35,6 +41,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
     a { color: inherit; }
@@ -119,6 +126,15 @@
       padding: 85px 0 70px;
       background: #fff;
       border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top, rgba(243, 156, 18, 0.06), transparent 60%);
+      pointer-events: none;
     }
 
     .hero-grid {
@@ -126,6 +142,8 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: 50px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .badge {
@@ -223,13 +241,26 @@
     }
 
     /* Fortschritt */
-    .progress-section { background: var(--canvas); }
+    .progress-section { 
+      background: var(--canvas);
+      position: relative;
+    }
+
+    .progress-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at bottom, rgba(230, 126, 34, 0.05), transparent 60%);
+      pointer-events: none;
+    }
 
     .progress-layout {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 32px;
       align-items: stretch;
+      position: relative;
+      z-index: 1;
     }
 
     .progress-card {
@@ -330,6 +361,8 @@
       display: grid;
       grid-template-rows: auto 1fr;
       gap: 24px;
+      position: relative;
+      z-index: 1;
     }
 
     .ring-card {
@@ -503,6 +536,8 @@
       gap: 12px;
       box-shadow: 0 8px 24px rgba(245, 158, 11, 0.1);
       animation: moveStripes 3s linear infinite;
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes moveStripes {
@@ -585,13 +620,29 @@
     }
 
     /* Instagram */
-    .instagram { color: #fff; background: var(--dark); }
+    .instagram { 
+      color: #fff; 
+      background: var(--dark);
+      position: relative;
+    }
+
+    .instagram::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top, rgba(192, 57, 43, 0.08), transparent 60%);
+      pointer-events: none;
+    }
+
     .instagram .container {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 30px;
+      position: relative;
+      z-index: 1;
     }
+
     .instagram .section-label { color: var(--green); }
     .instagram h2 { color: #fff; }
     .instagram p { margin: 0; color: #a0aec0; font-size: 1.1rem; }
@@ -604,10 +655,57 @@
     }
 
     /* Footer */
-    footer { padding: 40px 0; background: #1a202c; color: #718096; font-size: 0.9rem; }
-    .footer { display: flex; justify-content: space-between; gap: 20px; }
+    footer { 
+      padding: 40px 0; 
+      background: #1a202c; 
+      color: #718096; 
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at bottom, rgba(230, 126, 34, 0.06), transparent 60%);
+      pointer-events: none;
+    }
+
+    .footer { 
+      display: flex; 
+      justify-content: space-between; 
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
     footer a { color: #e2e8f0; font-weight: 700; text-decoration: none; }
     footer a:hover { color: var(--green); }
+
+    /* Herbst-Overlay mit fallenden Blättern & Kürbissen */
+    .autumn-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .falling-item {
+      position: absolute;
+      top: -60px;
+      font-size: 22px;
+      opacity: 0.75;
+      animation: fall linear forwards;
+      will-change: transform;
+      user-select: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
 
     @media (max-width: 900px) {
       .progress-layout { grid-template-columns: 1fr; }
@@ -632,6 +730,9 @@
 </head>
 
 <body>
+  <!-- Herbst-Overlay -->
+  <div class="autumn-overlay" id="autumnOverlay" aria-hidden="true"></div>
+
   <header>
     <nav class="container">
       <a class="brand" href="#start">KP<span>25</span></a>
@@ -884,6 +985,46 @@
 
       update();
       setInterval(update, 1000);
+    })();
+
+    // Herbst-Animation: fallende Blätter & kleine Kürbisse
+    (() => {
+      const overlay = document.getElementById("autumnOverlay");
+      if (!overlay) return;
+
+      const items = ["🍂", "🍁", "🎃", "🍂", "🍁"];
+      const itemCount = 18; // nicht zu viele, damit es nicht überladen wirkt
+
+      function createFallingItem() {
+        const el = document.createElement("span");
+        el.className = "falling-item";
+        el.textContent = items[Math.floor(Math.random() * items.length)];
+
+        const startLeft = Math.random() * 100; // vw
+        const duration = 8 + Math.random() * 7; // 8–15s
+        const size = 16 + Math.random() * 14; // 16–30px
+        const delay = Math.random() * 6;
+
+        el.style.left = startLeft + "vw";
+        el.style.fontSize = size + "px";
+        el.style.animationDuration = duration + "s";
+        el.style.animationDelay = delay + "s";
+
+        overlay.appendChild(el);
+
+        // Element nach Ablauf entfernen, damit DOM nicht wächst
+        setTimeout(() => {
+          el.remove();
+        }, (duration + delay + 2) * 1000);
+      }
+
+      // Initiale Items
+      for (let i = 0; i < itemCount; i++) {
+        createFallingItem();
+      }
+
+      // Laufend neue Items hinzufügen, aber sparsam
+      setInterval(createFallingItem, 2500);
     })();
   </script>
 </body>
