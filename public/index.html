@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Die Klassen-Webseite der KP25 an der Euro Akademie Pößneck. Begleite uns auf unserem Weg zum Abschluss 2028!">
+  <meta name="description" content="Die Klassen-Webseite der KP25 an der Euro Akademie Pößneck. Ein Schülerprojekt für die Klasse – auf dem Weg zum Abschluss 2028!">
   <meta name="theme-color" content="#0098b0">
   <title>KP25 | Angehende Kinderpfleger*innen in Pößneck</title>
 
@@ -485,7 +485,39 @@
       color: var(--muted);
     }
 
-    /* Info Board (Wieder leer) */
+    /* Beta Box unter Progress */
+    .beta-notice {
+      margin-top: 32px;
+      padding: 16px 24px;
+      background: linear-gradient(45deg, #fffbee 25%, #fff8e1 25%, #fff8e1 50%, #fffbee 50%, #fffbee 75%, #fff8e1 75%, #fff8e1 100%);
+      background-size: 40px 40px;
+      border: 2px dashed #f59e0b;
+      border-radius: 20px;
+      color: #b45309;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.1);
+      animation: moveStripes 3s linear infinite;
+    }
+
+    @keyframes moveStripes {
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 0; }
+    }
+
+    .beta-notice span {
+      background: #fff;
+      padding: 6px 16px;
+      border-radius: 12px;
+      border: 1px solid #fcd34d;
+    }
+
+    /* Info Board */
     .info { background: #fff; }
 
     .board-grid {
@@ -580,6 +612,7 @@
     @media (max-width: 900px) {
       .progress-layout { grid-template-columns: 1fr; }
       .about { grid-template-columns: 1fr; }
+      .beta-notice { flex-direction: column; text-align: center; }
     }
 
     @media (max-width: 760px) {
@@ -615,7 +648,7 @@
     <section class="hero" id="start">
       <div class="container hero-grid">
         <div>
-          <span class="badge">Euro Akademie Pößneck</span>
+          <span class="badge">Klassenprojekt</span>
           <h1>Hallo! Wir sind die KP25.</h1>
           <p class="lead">Wir sind die angehenden Kinderpfleger*innen des Jahrgangs. Begleite uns auf unserem Weg zum staatlichen Abschluss!</p>
           <div class="tags">
@@ -720,6 +753,12 @@
             </div>
           </div>
         </div>
+
+        <div class="beta-notice">
+          <span>🚧 <strong>Work in Progress!</strong></span> 
+          Diese Seite ist eine Beta-Version. Sie wird gerade von einem Schüler für unsere Klasse weitergebaut.
+        </div>
+
       </div>
     </section>
 
@@ -731,7 +770,7 @@
         
         <div class="board-grid">
           <div class="empty-card">
-            <div class="smile">☕</div>
+            <div class="smile">💡</div>
             <h3>Hier ist es gerade noch ruhig!</h3>
             <p>Sobald es spannende News oder neue Termine gibt, pinnen wir sie hier an.</p>
           </div>
@@ -751,7 +790,7 @@
         <div class="about">
           <article class="card">
             <p>
-              Wir sind die KP25 – ein bunter Haufen angehender Kinderpfleger*innen an der Euro Akademie Pößneck. Bis zu unserem Abschluss im Juli 2028 teilen wir nicht nur den Klassenraum, sondern auch Lachen, Nervosität vor Prüfungen, coole Praktika und unzählige Kaffeepausen. Wir wachsen zusammen, lernen voneinander und machen uns gemeinsam fit für die Arbeit mit Kids!
+              Wir sind die KP25 – ein bunter Haufen angehender Kinderpfleger*innen an der Euro Akademie Pößneck. Bis zu unserem Abschluss im Juli 2028 teilen wir nicht nur den Klassenraum, sondern auch Lachen, Nervosität vor Prüfungen, coole Praktika und jede Menge witzige Insider in den Pausen. Wir wachsen zusammen, lernen voneinander und machen uns gemeinsam fit für die Arbeit mit Kids!
             </p>
           </article>
           <aside class="card school">
@@ -784,7 +823,10 @@
       <div>
         <strong>KP25 · Euro Akademie Pößneck</strong><br>
         Gemeinsam unterwegs: 01.08.2026 – 31.07.2028<br>
-        <small style="opacity: 0.7; display: block; margin-top: 8px;">Private Webseite der Klasse. Kein offizieller Auftritt der Euro Akademie.</small>
+        <small style="opacity: 0.7; display: block; margin-top: 8px; line-height: 1.4;">
+          <strong>Ein Schülerprojekt</strong>, gemacht für die gesamte Klasse KP25.<br>
+          Dies ist eine private Webseite und <em>kein</em> offizieller Web-Auftritt der Euro Akademie.
+        </small>
       </div>
       <div>
         <a href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">
