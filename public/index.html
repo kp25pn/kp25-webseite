@@ -22,12 +22,9 @@
       --canvas: #f8fafc;
       --white: #fff;
       --max: 1080px;
-
-      /* Herbst-Akzente */
       --autumn-orange: #e67e22;
       --autumn-red: #c0392b;
       --autumn-yellow: #f39c12;
-      --halloween-bg: #1a1a1a;
     }
 
     * { box-sizing: border-box; }
@@ -51,7 +48,6 @@
       margin: auto;
     }
 
-    /* Header */
     header {
       position: sticky;
       top: 0;
@@ -96,10 +92,8 @@
       font-size: 0.95rem;
       transition: color 0.2s;
     }
-    
-    .links a:hover {
-      color: var(--cyan);
-    }
+
+    .links a:hover { color: var(--cyan); }
 
     .button {
       display: inline-flex;
@@ -121,7 +115,6 @@
       box-shadow: 0 6px 16px rgba(0, 152, 176, 0.3);
     }
 
-    /* Hero */
     .hero {
       padding: 85px 0 70px;
       background: #fff;
@@ -210,10 +203,8 @@
       transform: rotate(2deg);
       transition: transform 0.3s ease;
     }
-    
-    .logo:hover {
-      transform: rotate(-1deg) scale(1.02);
-    }
+
+    .logo:hover { transform: rotate(-1deg) scale(1.02); }
 
     .logo img {
       display: block;
@@ -240,8 +231,7 @@
       font-size: 1.05rem;
     }
 
-    /* Fortschritt */
-    .progress-section { 
+    .progress-section {
       background: var(--canvas);
       position: relative;
     }
@@ -334,10 +324,8 @@
       text-align: center;
       transition: border-color 0.2s;
     }
-    
-    .time:hover {
-      border-color: var(--cyan);
-    }
+
+    .time:hover { border-color: var(--cyan); }
 
     .time strong {
       display: block;
@@ -356,7 +344,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* Rechter Block: Vertikaler Zeitstrahl */
     .progress-visual {
       display: grid;
       grid-template-rows: auto 1fr;
@@ -436,7 +423,6 @@
       line-height: 1;
     }
 
-    /* Vertikale Meilensteine */
     .milestones {
       display: flex;
       flex-direction: column;
@@ -454,9 +440,7 @@
       color: #a0aec0;
     }
 
-    .milestone:last-child {
-      padding-bottom: 0;
-    }
+    .milestone:last-child { padding-bottom: 0; }
 
     .milestone::before {
       content: "";
@@ -485,22 +469,10 @@
       transition: all 0.3s ease;
     }
 
-    .milestone:last-child::after {
-      display: none;
-    }
-
-    .milestone.active {
-      color: var(--dark);
-    }
-
-    .milestone.active::before {
-      background: var(--cyan);
-      border-color: var(--cyan);
-    }
-
-    .milestone.active::after {
-      background: var(--cyan);
-    }
+    .milestone:last-child::after { display: none; }
+    .milestone.active { color: var(--dark); }
+    .milestone.active::before { background: var(--cyan); border-color: var(--cyan); }
+    .milestone.active::after { background: var(--cyan); }
 
     .milestone strong {
       display: block;
@@ -518,7 +490,6 @@
       color: var(--muted);
     }
 
-    /* Beta Box unter Progress */
     .beta-notice {
       margin-top: 32px;
       padding: 16px 24px;
@@ -552,7 +523,6 @@
       border: 1px solid #fcd34d;
     }
 
-    /* Info Board */
     .info { background: #fff; }
 
     .board-grid {
@@ -561,28 +531,43 @@
       gap: 24px;
     }
 
-    .empty-card {
-      display: flex;
-      flex-direction: column;
+    .sticker-card {
+      display: grid;
+      grid-template-columns: minmax(140px, 0.9fr) 1.2fr;
       align-items: center;
-      justify-content: center;
-      min-height: 200px;
-      padding: 40px;
-      border: 2px dashed #dbe0e9;
+      gap: 24px;
+      border: 2px solid #d9f1f4;
+      background: linear-gradient(135deg, #f3fcfd, #ffffff);
+      box-shadow: 0 10px 30px rgba(0, 152, 176, 0.08);
+      text-align: left;
       border-radius: 24px;
-      background: var(--canvas);
-      text-align: center;
+      padding: 20px;
     }
 
-    .empty-card .smile { 
-      font-size: 2.2rem;
-      margin-bottom: 8px;
+    .sticker-card img {
+      display: block;
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 1195 / 896;
+      margin: auto;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 10px 22px rgba(44, 52, 64, 0.12);
     }
-    
-    .empty-card h3 { margin: 0 0 6px; color: var(--dark); font-weight: 800; font-size: 1.1rem; }
-    .empty-card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
-    /* Über uns */
+    .sticker-card h3 {
+      margin: 0 0 8px;
+      color: var(--dark);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .sticker-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
     .about {
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
@@ -610,18 +595,13 @@
       flex-direction: column;
       justify-content: center;
     }
-    
+
     .school h3 { color: #fff; margin-bottom: 8px; }
     .school p { margin: 0 0 24px; color: rgba(255, 255, 255, 0.9); }
-    .school .button {
-      background: #fff;
-      color: var(--cyan-dark) !important;
-      align-self: flex-start;
-    }
+    .school .button { background: #fff; color: var(--cyan-dark) !important; align-self: flex-start; }
 
-    /* Instagram */
-    .instagram { 
-      color: #fff; 
+    .instagram {
+      color: #fff;
       background: var(--dark);
       position: relative;
     }
@@ -646,19 +626,12 @@
     .instagram .section-label { color: var(--green); }
     .instagram h2 { color: #fff; }
     .instagram p { margin: 0; color: #a0aec0; font-size: 1.1rem; }
-    .instagram .button {
-      background: var(--green);
-      color: var(--dark) !important;
-      font-weight: 800 !important;
-      white-space: nowrap;
-      padding: 14px 24px;
-    }
+    .instagram .button { background: var(--green); color: var(--dark) !important; font-weight: 800 !important; white-space: nowrap; padding: 14px 24px; }
 
-    /* Footer */
-    footer { 
-      padding: 40px 0; 
-      background: #1a202c; 
-      color: #718096; 
+    footer {
+      padding: 40px 0;
+      background: #1a202c;
+      color: #718096;
       font-size: 0.9rem;
       position: relative;
     }
@@ -671,9 +644,9 @@
       pointer-events: none;
     }
 
-    .footer { 
-      display: flex; 
-      justify-content: space-between; 
+    .footer {
+      display: flex;
+      justify-content: space-between;
       gap: 20px;
       position: relative;
       z-index: 1;
@@ -682,7 +655,7 @@
     footer a { color: #e2e8f0; font-weight: 700; text-decoration: none; }
     footer a:hover { color: var(--green); }
 
-    /* Herbst-Overlay mit fallenden Blättern & Kürbissen */
+    /* Herbst-Overlay */
     .autumn-overlay {
       position: fixed;
       inset: 0;
@@ -693,18 +666,27 @@
 
     .falling-item {
       position: absolute;
-      top: -60px;
-      font-size: 22px;
-      opacity: 0.75;
-      animation: fall linear forwards;
+      top: -40px;
+      left: 0;
+      font-size: 20px;
+      opacity: 0.58;
+      animation: fall var(--fall-duration) linear forwards;
       will-change: transform;
       user-select: none;
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(360deg);
-      }
+      0% { transform: translate3d(0, -45px, 0) rotate(0deg); }
+      25% { transform: translate3d(var(--sway-a), 25vh, 0) rotate(90deg); }
+      50% { transform: translate3d(var(--sway-b), 52vh, 0) rotate(190deg); }
+      75% { transform: translate3d(var(--sway-c), 78vh, 0) rotate(275deg); }
+      100% { transform: translate3d(var(--sway-d), 110vh, 0) rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .falling-item { animation: none; display: none; }
+      .beta-notice, .bar, .ring-fill { transition: none; animation: none; }
     }
 
     @media (max-width: 900px) {
@@ -724,13 +706,13 @@
       .progress-top { display: block; text-align: center; }
       .dates { margin-top: 12px; text-align: center; }
       .countdown { grid-template-columns: repeat(2, 1fr); }
+      .sticker-card { grid-template-columns: 1fr; text-align: center; }
       .instagram .container, .footer { align-items: flex-start; flex-direction: column; text-align: left; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Herbst-Overlay -->
   <div class="autumn-overlay" id="autumnOverlay" aria-hidden="true"></div>
 
   <header>
@@ -760,7 +742,7 @@
           <a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Schau auf Instagram vorbei</a>
         </div>
         <div class="logo">
-          <img src="KP25.jpeg" alt="KP25 – Profilbild der Klasse">
+          <img src="public/KP25.jpeg" alt="KP25 – Profilbild der Klasse">
         </div>
       </div>
     </section>
@@ -778,32 +760,16 @@
                 <div class="small-label">Geschafft!</div>
                 <div id="percent" class="percent">0,00 %</div>
               </div>
-              <div class="dates">
-                Ausbildungszeitraum<br> 01.08.2026 – 31.07.2028
-              </div>
+              <div class="dates">Ausbildungszeitraum<br>01.08.2026 – 31.07.2028</div>
             </div>
-
             <div class="bar-wrap" role="progressbar" aria-label="Fortschritt der Ausbildungszeit" aria-valuemin="0" aria-valuemax="100">
               <div id="bar" class="bar"></div>
             </div>
-
             <div class="countdown">
-              <div class="time">
-                <strong id="days">0</strong>
-                <span>Tage</span>
-              </div>
-              <div class="time">
-                <strong id="hours">00</strong>
-                <span>Stunden</span>
-              </div>
-              <div class="time">
-                <strong id="minutes">00</strong>
-                <span>Minuten</span>
-              </div>
-              <div class="time">
-                <strong id="seconds">00</strong>
-                <span>Sekunden</span>
-              </div>
+              <div class="time"><strong id="days">0</strong><span>Tage</span></div>
+              <div class="time"><strong id="hours">00</strong><span>Stunden</span></div>
+              <div class="time"><strong id="minutes">00</strong><span>Minuten</span></div>
+              <div class="time"><strong id="seconds">00</strong><span>Sekunden</span></div>
             </div>
           </div>
 
@@ -817,49 +783,27 @@
                 <svg viewBox="0 0 160 160" aria-hidden="true">
                   <defs>
                     <linearGradient id="grad" x1="0" x2="1" y1="0" y2="0">
-                      <stop offset="0%" stop-color="#0098b0"/>
-                      <stop offset="100%" stop-color="#7dd855"/>
+                      <stop offset="0%" stop-color="#0098b0"/><stop offset="100%" stop-color="#7dd855"/>
                     </linearGradient>
                   </defs>
                   <circle class="ring-bg" cx="80" cy="80" r="70"/>
                   <circle id="ringFill" class="ring-fill" cx="80" cy="80" r="70"/>
                 </svg>
-                <div class="ring-text">
-                  <strong id="ringPercent">0 %</strong>
-                </div>
+                <div class="ring-text"><strong id="ringPercent">0 %</strong></div>
               </div>
             </div>
 
             <div class="milestones">
-              <div class="milestone" data-value="0">
-                <strong>Start</strong>
-                <small>01.08.2026</small>
-              </div>
-              <div class="milestone" data-value="25">
-                <strong>25 %</strong>
-                <small>Erste Etappe</small>
-              </div>
-              <div class="milestone" data-value="50">
-                <strong>50 %</strong>
-                <small>Halbzeit</small>
-              </div>
-              <div class="milestone" data-value="75">
-                <strong>75 %</strong>
-                <small>Endspurt</small>
-              </div>
-              <div class="milestone" data-value="100">
-                <strong>100 %</strong>
-                <small>Abschluss</small>
-              </div>
+              <div class="milestone" data-value="0"><strong>Start</strong><small>01.08.2026</small></div>
+              <div class="milestone" data-value="25"><strong>25 %</strong><small>Erste Etappe</small></div>
+              <div class="milestone" data-value="50"><strong>50 %</strong><small>Halbzeit</small></div>
+              <div class="milestone" data-value="75"><strong>75 %</strong><small>Endspurt</small></div>
+              <div class="milestone" data-value="100"><strong>100 %</strong><small>Abschluss</small></div>
             </div>
           </div>
         </div>
 
-        <div class="beta-notice">
-          <span>🚧 <strong>Work in Progress!</strong></span> 
-          Diese Seite ist eine Beta-Version. Sie wird gerade von einem Schüler für unsere Klasse weitergebaut.
-        </div>
-
+        <div class="beta-notice"><span>🚧 <strong>Work in Progress!</strong></span>Diese Seite ist eine Beta-Version. Sie wird gerade von einem Schüler für unsere Klasse weitergebaut.</div>
       </div>
     </section>
 
@@ -868,18 +812,15 @@
         <p class="section-label">Klassen-Pinnwand</p>
         <h2>Was gibt's Neues?</h2>
         <p class="intro">Alles Wichtige auf einen Blick: Termine, Ausflüge oder einfach nur Infos, die wir nicht vergessen dürfen.</p>
-        
+
         <div class="board-grid">
-          <div class="empty-card">
-            <div class="smile">💡</div>
-            <h3>Hier ist es gerade noch ruhig!</h3>
-            <p>Sobald es spannende News oder neue Termine gibt, pinnen wir sie hier an.</p>
-          </div>
-          <div class="empty-card">
-            <div class="smile">📌</div>
-            <h3>Nichts zu verkünden</h3>
-            <p>Aktuell stehen keine klasseninternen Ankündigungen an.</p>
-          </div>
+          <article class="sticker-card">
+            <img src="public/sticker.jpeg" alt="KP25-Aufkleber">
+            <div>
+              <h3>Wir haben jetzt Aufkleber!</h3>
+              <p>Nur als Info: Unsere KP25-Aufkleber sind da. Sie sind aktuell nicht zum Verkauf bestimmt.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -889,51 +830,24 @@
         <p class="section-label">Die Klasse</p>
         <h2>Wer wir sind</h2>
         <div class="about">
-          <article class="card">
-            <p>
-              Wir sind die KP25 – ein bunter Haufen angehender Kinderpfleger*innen an der Euro Akademie Pößneck. Bis zu unserem Abschluss im Juli 2028 teilen wir nicht nur den Klassenraum, sondern auch Lachen, Nervosität vor Prüfungen, coole Praktika und jede Menge witzige Insider in den Pausen. Wir wachsen zusammen, lernen voneinander und machen uns gemeinsam fit für die Arbeit mit Kids!
-            </p>
-          </article>
-          <aside class="card school">
-            <h3>Euro Akademie</h3>
-            <p>Pößneck, Thüringen</p>
-            <a class="button" href="https://www.euroakademie.de/poessneck" target="_blank" rel="noopener noreferrer">
-              Zur Schul-Webseite
-            </a>
-          </aside>
+          <article class="card"><p>Wir sind die KP25 – ein bunter Haufen angehender Kinderpfleger*innen an der Euro Akademie Pößneck. Bis zu unserem Abschluss im Juli 2028 teilen wir nicht nur den Klassenraum, sondern auch Lachen, Nervosität vor Prüfungen, coole Praktika und jede Menge witzige Insider in den Pausen. Wir wachsen zusammen, lernen voneinander und machen uns gemeinsam fit für die Arbeit mit Kids!</p></article>
+          <aside class="card school"><h3>Euro Akademie</h3><p>Pößneck, Thüringen</p><a class="button" href="https://www.euroakademie.de/poessneck" target="_blank" rel="noopener noreferrer">Zur Schul-Webseite</a></aside>
         </div>
       </div>
     </section>
 
     <section class="instagram">
       <div class="container">
-        <div>
-          <p class="section-label">@kp25_pn</p>
-          <h2>Unser Schulalltag live</h2>
-          <p>Echte Einblicke, witzige Momente und der ganz normale Wahnsinn – folge uns auf Insta!</p>
-        </div>
-        <a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">
-          Jetzt folgen
-        </a>
+        <div><p class="section-label">@kp25_pn</p><h2>Unser Schulalltag live</h2><p>Echte Einblicke, witzige Momente und der ganz normale Wahnsinn – folge uns auf Insta!</p></div>
+        <a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Jetzt folgen</a>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container footer">
-      <div>
-        <strong>KP25 · Euro Akademie Pößneck</strong><br>
-        Gemeinsam unterwegs: 01.08.2026 – 31.07.2028<br>
-        <small style="opacity: 0.7; display: block; margin-top: 8px; line-height: 1.4;">
-          <strong>Ein Schülerprojekt</strong>, gemacht für die gesamte Klasse KP25.<br>
-          Dies ist eine private Webseite und <em>kein</em> offizieller Web-Auftritt der Euro Akademie.
-        </small>
-      </div>
-      <div>
-        <a href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">
-          Instagram @kp25_pn
-        </a>
-      </div>
+      <div><strong>KP25 · Euro Akademie Pößneck</strong><br>Gemeinsam unterwegs: 01.08.2026 – 31.07.2028<br><small style="opacity: 0.7; display: block; margin-top: 8px; line-height: 1.4;"><strong>Ein Schülerprojekt</strong>, gemacht für die gesamte Klasse KP25.<br>Dies ist eine private Webseite und <em>kein</em> offizieller Web-Auftritt der Euro Akademie.</small></div>
+      <div><a href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Instagram @kp25_pn</a></div>
     </div>
   </footer>
 
@@ -941,90 +855,76 @@
     (() => {
       const start = new Date("2026-08-01T00:00:00+02:00").getTime();
       const end = new Date("2028-07-31T23:59:59+02:00").getTime();
-
       const percent = document.getElementById("percent");
       const bar = document.getElementById("bar");
       const progressElement = bar.parentElement;
       const milestones = document.querySelectorAll(".milestone");
       const ringFill = document.getElementById("ringFill");
       const ringPercent = document.getElementById("ringPercent");
-
       const circumference = 2 * Math.PI * 70;
       ringFill.style.strokeDasharray = `${circumference}`;
       ringFill.style.strokeDashoffset = `${circumference}`;
-
-      const format = new Intl.NumberFormat("de-DE", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
+      const format = new Intl.NumberFormat("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       function update() {
         const now = Date.now();
         const value = Math.min(100, Math.max(0, ((now - start) / (end - start)) * 100));
         const left = Math.max(0, end - now);
         const totalSeconds = Math.floor(left / 1000);
-
         percent.textContent = format.format(value) + " %";
         bar.style.width = value + "%";
         progressElement.setAttribute("aria-valuenow", value.toFixed(2));
-
         document.getElementById("days").textContent = Math.floor(totalSeconds / 86400).toLocaleString("de-DE");
         document.getElementById("hours").textContent = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, "0");
         document.getElementById("minutes").textContent = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
         document.getElementById("seconds").textContent = String(totalSeconds % 60).padStart(2, "0");
-
         milestones.forEach(item => {
           const mark = Number(item.dataset.value);
           item.classList.toggle("active", value >= mark && (mark !== 0 || now >= start));
         });
-
-        const offset = circumference - (value / 100) * circumference;
-        ringFill.style.strokeDashoffset = offset;
+        ringFill.style.strokeDashoffset = circumference - (value / 100) * circumference;
         ringPercent.textContent = Math.floor(value) + " %";
       }
-
       update();
       setInterval(update, 1000);
     })();
 
-    // Herbst-Animation: fallende Blätter & kleine Kürbisse
     (() => {
       const overlay = document.getElementById("autumnOverlay");
       if (!overlay) return;
+      const items = ["🍂", "🍁", "🎃"];
+      const itemCount = 6;
+      let activeItems = 0;
+      const maxActiveItems = 8;
 
-      const items = ["🍂", "🍁", "🎃", "🍂", "🍁"];
-      const itemCount = 18; // nicht zu viele, damit es nicht überladen wirkt
+      function randomBetween(min, max) {
+        return Math.round(min + Math.random() * (max - min));
+      }
 
       function createFallingItem() {
+        if (activeItems >= maxActiveItems) return;
+        activeItems++;
         const el = document.createElement("span");
         el.className = "falling-item";
         el.textContent = items[Math.floor(Math.random() * items.length)];
-
-        const startLeft = Math.random() * 100; // vw
-        const duration = 8 + Math.random() * 7; // 8–15s
-        const size = 16 + Math.random() * 14; // 16–30px
-        const delay = Math.random() * 6;
-
-        el.style.left = startLeft + "vw";
-        el.style.fontSize = size + "px";
-        el.style.animationDuration = duration + "s";
-        el.style.animationDelay = delay + "s";
-
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.fontSize = randomBetween(16, 25) + "px";
+        el.style.setProperty("--fall-duration", randomBetween(12, 19) + "s");
+        el.style.setProperty("--sway-a", randomBetween(-45, 45) + "px");
+        el.style.setProperty("--sway-b", randomBetween(-80, 80) + "px");
+        el.style.setProperty("--sway-c", randomBetween(-50, 50) + "px");
+        el.style.setProperty("--sway-d", randomBetween(-100, 100) + "px");
         overlay.appendChild(el);
-
-        // Element nach Ablauf entfernen, damit DOM nicht wächst
-        setTimeout(() => {
+        el.addEventListener("animationend", () => {
           el.remove();
-        }, (duration + delay + 2) * 1000);
+          activeItems--;
+        }, { once: true });
       }
 
-      // Initiale Items
       for (let i = 0; i < itemCount; i++) {
-        createFallingItem();
+        setTimeout(createFallingItem, i * 850);
       }
-
-      // Laufend neue Items hinzufügen, aber sparsam
-      setInterval(createFallingItem, 2500);
+      setInterval(createFallingItem, 4200);
     })();
   </script>
 </body>
