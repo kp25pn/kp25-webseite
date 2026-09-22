@@ -25,11 +25,6 @@
       --canvas: #f8fafc;
       --white: #fff;
       --max: 1080px;
-      --autumn-orange: #e67e22;
-      --autumn-red: #c0392b;
-      --autumn-yellow: #f39c12;
-      --beige-light: #fcf8f2;
-      --beige-border: #f0e6d8;
     }
 
     * { box-sizing: border-box; }
@@ -131,7 +126,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at top, rgba(243, 156, 18, 0.06), transparent 60%);
+      background: radial-gradient(ellipse at top, rgba(0, 152, 176, 0.06), transparent 60%);
       pointer-events: none;
     }
 
@@ -239,14 +234,6 @@
     .progress-section {
       background: var(--canvas);
       position: relative;
-    }
-
-    .progress-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at bottom, rgba(230, 126, 34, 0.05), transparent 60%);
-      pointer-events: none;
     }
 
     .progress-layout {
@@ -498,11 +485,11 @@
     .beta-notice {
       margin-top: 32px;
       padding: 16px 24px;
-      background: linear-gradient(45deg, #fffbee 25%, #fff8e1 25%, #fff8e1 50%, #fffbee 50%, #fffbee 75%, #fff8e1 75%, #fff8e1 100%);
+      background: linear-gradient(45deg, #f3fcfd 25%, #ffffff 25%, #ffffff 50%, #f3fcfd 50%, #f3fcfd 75%, #ffffff 75%, #ffffff 100%);
       background-size: 40px 40px;
-      border: 2px dashed #f59e0b;
+      border: 2px dashed var(--cyan);
       border-radius: 20px;
-      color: #b45309;
+      color: var(--cyan-dark);
       text-align: center;
       font-size: 1rem;
       font-weight: 700;
@@ -510,7 +497,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 152, 176, 0.1);
       animation: moveStripes 3s linear infinite;
       position: relative;
       z-index: 1;
@@ -525,7 +512,7 @@
       background: #fff;
       padding: 6px 16px;
       border-radius: 12px;
-      border: 1px solid #fcd34d;
+      border: 1px solid var(--cyan);
     }
 
     .info { background: #fff; }
@@ -573,7 +560,7 @@
       font-size: 0.95rem;
     }
 
-    /* FERIEN-BEREICH STYLES */
+    /* ÜBERARBEITETER FERIEN-BEREICH STYLES */
     .vacation-section {
       background: var(--canvas);
       position: relative;
@@ -582,7 +569,7 @@
 
     .vacation-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 0.95fr 1.05fr;
       gap: 32px;
       align-items: start;
     }
@@ -590,16 +577,16 @@
     .vacation-card {
       background: var(--white);
       border-radius: 24px;
-      padding: clamp(24px, 4vw, 32px);
+      padding: clamp(26px, 5vw, 40px);
       box-shadow: 0 10px 40px rgba(44, 52, 64, 0.05);
-      border: 2px solid #f3e9dc;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
       position: relative;
       overflow: hidden;
     }
 
+    /* Bunter Balken oben, passend zum restlichen Design */
     .vacation-card::before {
       content: "";
       position: absolute;
@@ -607,7 +594,7 @@
       left: 0;
       right: 0;
       height: 6px;
-      background: linear-gradient(90deg, var(--autumn-orange), var(--autumn-yellow));
+      background: linear-gradient(90deg, var(--cyan), var(--green));
     }
 
     .vacation-status-badge {
@@ -628,25 +615,26 @@
     }
 
     .vacation-status-badge.next-vacation {
-      background: #fff8eb;
-      color: var(--autumn-orange);
-      border: 1.5px solid #fde68a;
+      background: #f3fcfd;
+      color: var(--cyan-dark);
+      border: 1.5px solid #d9f1f4;
     }
 
     .vacation-card h3 {
       margin: 0;
-      font-size: clamp(1.5rem, 3vw, 1.8rem);
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
       color: var(--dark);
       font-weight: 800;
+      line-height: 1.2;
     }
 
     .vacation-greeting {
       margin: 0;
       padding: 12px 16px;
-      background: #fef3c7;
-      border-left: 4px solid var(--autumn-orange);
+      background: #f3fcfd;
+      border-left: 4px solid var(--cyan);
       border-radius: 8px;
-      color: #92400e;
+      color: var(--cyan-dark);
       font-weight: 700;
       font-size: 0.95rem;
     }
@@ -654,27 +642,33 @@
     .vacation-timer-units {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 14px;
     }
 
+    /* Angepasst an das restliche UI-Muster der Timer */
     .v-unit {
-      background: var(--beige-light);
-      border: 1.5px solid var(--beige-border);
+      padding: 16px 8px;
+      border: 2px solid var(--canvas);
       border-radius: 16px;
-      padding: 14px 8px;
+      background: var(--white);
       text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .v-unit:hover {
+      border-color: var(--cyan);
     }
 
     .v-unit strong {
       display: block;
-      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
       font-family: "Anton", sans-serif;
       color: var(--dark);
-      line-height: 1;
+      line-height: 1.1;
     }
 
     .v-unit span {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 800;
       color: var(--muted);
       text-transform: uppercase;
@@ -682,29 +676,36 @@
     }
 
     .vacation-meta-info {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--muted);
       font-weight: 600;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       border-top: 1px dashed var(--line);
-      padding-top: 16px;
+      padding-top: 20px;
     }
 
     .vacation-table-container {
       background: var(--white);
       border-radius: 24px;
-      padding: clamp(20px, 3vw, 28px);
+      padding: clamp(20px, 4vw, 32px);
       box-shadow: 0 10px 40px rgba(44, 52, 64, 0.05);
-      border: 1px solid var(--line);
-      overflow-x: auto;
+      border: none;
     }
 
     .vacation-table-container h3 {
       margin-bottom: 16px;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 800;
+    }
+
+    /* Scrollbarer Wrapper für Mobile, damit die Ränder und das Padding intakt bleiben */
+    .table-responsive-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--line);
     }
 
     .vacation-table {
@@ -712,14 +713,14 @@
       border-collapse: collapse;
       text-align: left;
       font-size: 0.95rem;
-      min-width: 480px;
+      min-width: 450px;
     }
 
     .vacation-table th {
       background: var(--canvas);
-      color: var(--dark);
+      color: var(--muted);
       font-weight: 800;
-      padding: 12px 16px;
+      padding: 14px 16px;
       border-bottom: 2px solid var(--line);
       font-size: 0.85rem;
       text-transform: uppercase;
@@ -727,7 +728,7 @@
     }
 
     .vacation-table td {
-      padding: 14px 16px;
+      padding: 16px;
       border-bottom: 1px solid var(--line);
       color: var(--dark);
       font-weight: 600;
@@ -739,7 +740,6 @@
 
     .vacation-table tr.current {
       background-color: #f0fdf4;
-      font-weight: 700;
     }
 
     .vacation-table tr.current td:first-child {
@@ -747,18 +747,17 @@
     }
 
     .vacation-table tr.next {
-      background-color: #fffbeb;
-      font-weight: 700;
+      background-color: #f3fcfd;
     }
 
     .vacation-table tr.next td:first-child {
-      border-left: 4px solid var(--autumn-orange);
+      border-left: 4px solid var(--cyan);
     }
 
     .table-badge {
       display: inline-block;
       margin-left: 8px;
-      padding: 2px 8px;
+      padding: 4px 10px;
       border-radius: 99px;
       font-size: 0.75rem;
       font-weight: 800;
@@ -770,8 +769,8 @@
     }
 
     .table-badge.next-badge {
-      background: #fef3c7;
-      color: #b45309;
+      background: #eaf8f3;
+      color: var(--cyan-dark);
     }
 
     .about {
@@ -816,7 +815,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at top, rgba(192, 57, 43, 0.08), transparent 60%);
+      background: radial-gradient(ellipse at top, rgba(125, 216, 85, 0.08), transparent 60%);
       pointer-events: none;
     }
 
@@ -846,7 +845,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at bottom, rgba(230, 126, 34, 0.06), transparent 60%);
+      background: radial-gradient(ellipse at bottom, rgba(0, 152, 176, 0.06), transparent 60%);
       pointer-events: none;
     }
 
@@ -950,7 +949,6 @@
           <a class="button" href="https://www.instagram.com/kp25_pn/" target="_blank" rel="noopener noreferrer">Schau auf Instagram vorbei</a>
         </div>
         <div class="logo">
-          <!-- Pfad ohne "public/" -->
           <img src="KP25.jpeg" alt="KP25 – Profilbild der Klasse">
         </div>
       </div>
@@ -1024,7 +1022,6 @@
 
         <div class="board-grid">
           <article class="sticker-card">
-            <!-- Pfad ohne "public/" -->
             <img src="sticker.jpeg" alt="KP25-Aufkleber">
             <div>
               <h3>Wir haben jetzt Aufkleber!</h3>
@@ -1035,7 +1032,7 @@
       </div>
     </section>
 
-    <!-- FERIEN-BEREICH -->
+    <!-- ÜBERARBEITETER FERIEN-BEREICH -->
     <section class="vacation-section" id="ferien">
       <div class="container">
         <p class="section-label">Durchatmen & Ausruhen</p>
@@ -1051,7 +1048,7 @@
             
             <div>
               <h3 id="vacationTitle">Ferien werden geladen...</h3>
-              <p id="vacationSubtext" style="color: var(--muted); margin-top: 4px; margin-bottom: 0; font-size: 0.95rem; font-weight: 600;"></p>
+              <p id="vacationSubtext" style="color: var(--muted); margin-top: 6px; margin-bottom: 0; font-size: 1rem; font-weight: 600;"></p>
             </div>
 
             <div id="vacationGreeting" class="vacation-greeting" style="display: none;"></div>
@@ -1080,18 +1077,20 @@
           <!-- Ferien-Tabelle -->
           <div class="vacation-table-container">
             <h3>Ferienübersicht</h3>
-            <table class="vacation-table" aria-label="Schulferien Thüringen für die Schuljahre 2026/2027 und 2027/2028">
-              <thead>
-                <tr>
-                  <th scope="col">Ferien</th>
-                  <th scope="col">Zeitraum</th>
-                  <th scope="col">Dauer</th>
-                </tr>
-              </thead>
-              <tbody id="vacationTableBody">
-                <!-- Dynamisch per JS befüllt -->
-              </tbody>
-            </table>
+            <div class="table-responsive-wrapper">
+              <table class="vacation-table" aria-label="Schulferien Thüringen für die Schuljahre 2026/2027 und 2027/2028">
+                <thead>
+                  <tr>
+                    <th scope="col">Ferien</th>
+                    <th scope="col">Zeitraum</th>
+                    <th scope="col">Dauer</th>
+                  </tr>
+                </thead>
+                <tbody id="vacationTableBody">
+                  <!-- Dynamisch per JS befüllt -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -1125,7 +1124,7 @@
 
   <script>
     /* -------------------------------------------------------------
-       Bestehendes Skript für Ausbildungs-Countdown (Unverändert)
+       Bestehendes Skript für Ausbildungs-Countdown
     ------------------------------------------------------------- */
     (() => {
       const start = new Date("2026-08-01T00:00:00+02:00").getTime();
@@ -1165,10 +1164,15 @@
     })();
 
     /* -------------------------------------------------------------
-       Neues Skript für Thüringer Schulferien-Timer & Tabelle
+       Überarbeitetes Skript für Thüringer Schulferien-Timer & Tabelle
     ------------------------------------------------------------- */
     const vacations = [
       // Schuljahr 2026/2027
+      {
+        name: "Variabler Ferientag", // HINZUGEFÜGT
+        start: "2026-09-25T00:00:00+02:00",
+        end: "2026-09-25T23:59:59+02:00"
+      },
       {
         name: "Herbstferien 2026",
         start: "2026-10-12T00:00:00+02:00",
@@ -1239,6 +1243,8 @@
       function calculateDurationDays(startDate, endDate) {
         const diffMs = endDate.getTime() - startDate.getTime();
         const days = Math.round(diffMs / (1000 * 60 * 60 * 24));
+        // Bei eintägigen Events (wie Schulfreier Tag) +1 rechnen für Anzeige
+        if(startDate.toDateString() === endDate.toDateString()) return "1 Tag";
         return days === 1 ? "1 Tag" : `${days} Tage`;
       }
 
@@ -1266,10 +1272,14 @@
           tr.id = `vacation-row-${index}`;
 
           const tdName = document.createElement("td");
-          tdName.innerHTML = `<span>${v.name}</span> <span class="badge-placeholder"></span>`;
+          tdName.innerHTML = `<strong>${v.name}</strong> <span class="badge-placeholder"></span>`;
 
           const tdRange = document.createElement("td");
-          tdRange.textContent = `${formatDate(sDate)} bis ${formatDate(eDate)}`;
+          if(sDate.toDateString() === eDate.toDateString()){
+             tdRange.textContent = formatDate(sDate);
+          } else {
+             tdRange.textContent = `${formatDate(sDate)} – ${formatDate(eDate)}`;
+          }
 
           const tdDuration = document.createElement("td");
           tdDuration.textContent = durationStr;
@@ -1306,7 +1316,6 @@
           }
         }
 
-        // DOM Elemente für Timer Card
         const badgeEl = document.getElementById("vacationStatusBadge");
         const titleEl = document.getElementById("vacationTitle");
         const subtextEl = document.getElementById("vacationSubtext");
@@ -1328,7 +1337,6 @@
         });
 
         if (currentVacation) {
-          // Es sind Aktuell Ferien
           const sDate = new Date(currentVacation.start);
           const eDate = new Date(currentVacation.end);
           const diffMs = eDate.getTime() - nowTime;
@@ -1339,9 +1347,9 @@
           const minutes = totalMinutes % 60;
 
           badgeEl.className = "vacation-status-badge in-vacation";
-          badgeEl.innerHTML = "<span>🎉 Jetzt sind Ferien</span>";
+          badgeEl.innerHTML = "<span>🎉 Wir haben frei!</span>";
           titleEl.textContent = currentVacation.name;
-          subtextEl.textContent = "Schöne Ferien! Genießt die freie Zeit bis zum Ende der Ferien.";
+          subtextEl.textContent = "Genießt die freie Zeit! Noch so lange bis es weitergeht:";
 
           if (currentVacation.greeting) {
             greetingEl.style.display = "block";
@@ -1354,10 +1362,13 @@
           hEl.textContent = String(hours).padStart(2, "0");
           mEl.textContent = String(minutes).padStart(2, "0");
 
-          rangeEl.textContent = `${formatDate(sDate)} bis ${formatDate(eDate)}`;
+          if(sDate.toDateString() === eDate.toDateString()){
+             rangeEl.textContent = formatDate(sDate);
+          } else {
+             rangeEl.textContent = `${formatDate(sDate)} bis ${formatDate(eDate)}`;
+          }
           durationEl.textContent = calculateDurationDays(sDate, eDate);
 
-          // Tabelle hervorheben
           const curRow = document.getElementById(`vacation-row-${currentIdx}`);
           if (curRow) {
             curRow.className = "current";
@@ -1366,7 +1377,6 @@
           }
 
         } else if (nextVacation) {
-          // Nächste Ferien stehen an
           const sDate = new Date(nextVacation.start);
           const eDate = new Date(nextVacation.end);
           const diffMs = sDate.getTime() - nowTime;
@@ -1377,9 +1387,9 @@
           const minutes = totalMinutes % 60;
 
           badgeEl.className = "vacation-status-badge next-vacation";
-          badgeEl.innerHTML = "<span>⏳ Nächste Ferien</span>";
+          badgeEl.innerHTML = "<span>⏳ Nächster Halt</span>";
           titleEl.textContent = nextVacation.name;
-          subtextEl.textContent = "Der Countdown läuft! Noch so lange bis zum Ferienbeginn:";
+          subtextEl.textContent = "Der Countdown läuft! Noch so lange bis zur nächsten freien Zeit:";
 
           greetingEl.style.display = "none";
 
@@ -1387,10 +1397,13 @@
           hEl.textContent = String(hours).padStart(2, "0");
           mEl.textContent = String(minutes).padStart(2, "0");
 
-          rangeEl.textContent = `${formatDate(sDate)} bis ${formatDate(eDate)}`;
+          if(sDate.toDateString() === eDate.toDateString()){
+             rangeEl.textContent = formatDate(sDate);
+          } else {
+             rangeEl.textContent = `${formatDate(sDate)} bis ${formatDate(eDate)}`;
+          }
           durationEl.textContent = calculateDurationDays(sDate, eDate);
 
-          // Tabelle hervorheben
           const nxtRow = document.getElementById(`vacation-row-${nextIdx}`);
           if (nxtRow) {
             nxtRow.className = "next";
@@ -1399,7 +1412,6 @@
           }
 
         } else {
-          // Alle Ferien im Array sind vorbei
           badgeEl.className = "vacation-status-badge";
           badgeEl.innerHTML = "<span>🎓 Ausbildung abgeschlossen</span>";
           titleEl.textContent = "Keine weiteren Ferientermine";
@@ -1419,7 +1431,7 @@
     })();
 
     /* -------------------------------------------------------------
-       Bestehendes Skript für Herbst-Blätter-Effekt (Unverändert)
+       Bestehendes Skript für Herbst-Blätter-Effekt
     ------------------------------------------------------------- */
     (() => {
       const overlay = document.getElementById("autumnOverlay");
