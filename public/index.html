@@ -37,7 +37,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden; /* Verhindert seitliches Scrollen global */
+      overflow-x: hidden;
     }
 
     a { color: inherit; }
@@ -559,7 +559,101 @@
       font-size: 0.95rem;
     }
 
-    /* NEUER FERIEN-BEREICH (KOMPLETT RESPONSIVE) */
+    .halloween-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border: 2px solid #ff7b00;
+      background: linear-gradient(135deg, #2a1625, #1a0f16);
+      box-shadow: 0 10px 30px rgba(255, 123, 0, 0.15);
+      text-align: left;
+      border-radius: 24px;
+      padding: 24px;
+      color: #f8fafc;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .halloween-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(255, 123, 0, 0.25);
+    }
+
+    .halloween-card::before {
+      content: '🦇';
+      position: absolute;
+      top: 10px;
+      right: -5px;
+      font-size: 80px;
+      opacity: 0.08;
+      pointer-events: none;
+      transform: rotate(15deg);
+    }
+
+    .halloween-card::after {
+      content: '🕸️';
+      position: absolute;
+      bottom: -20px;
+      left: -10px;
+      font-size: 90px;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .halloween-card h3 {
+      margin: 0;
+      color: #ff7b00;
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: "Anton", sans-serif;
+      letter-spacing: 0.03em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .halloween-card p {
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .halloween-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 99px;
+      background: rgba(255, 123, 0, 0.15);
+      color: #ff7b00;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      width: fit-content;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255, 123, 0, 0.4);
+    }
+
+    .halloween-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(255, 123, 0, 0.4);
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .halloween-details strong {
+      color: #ff7b00;
+      font-weight: 800;
+    }
+
     .vacation-section {
       background: var(--canvas);
       position: relative;
@@ -695,7 +789,6 @@
       font-weight: 800;
     }
 
-    /* Modernes Listen-Design statt starrer Tabelle */
     .vacation-list {
       display: flex;
       flex-direction: column;
@@ -853,7 +946,6 @@
     footer a { color: #e2e8f0; font-weight: 700; text-decoration: none; }
     footer a:hover { color: var(--green); }
 
-    /* Saison-Overlay (Herbst, Winter etc.) */
     .seasonal-overlay {
       position: fixed;
       inset: 0;
@@ -909,7 +1001,6 @@
       .instagram .container, .footer { align-items: flex-start; flex-direction: column; text-align: left; }
     }
 
-    /* WICHTIG: Mobile Ansicht für Ferien-Listen (ersetzt Tabelle komplett ohne horizontales Scrollen) */
     @media (max-width: 650px) {
       .vacation-item {
         grid-template-columns: 1fr;
@@ -926,7 +1017,6 @@
 </head>
 
 <body>
-  <!-- Jahreszeiten-Effekt Container -->
   <div class="seasonal-overlay" id="seasonalOverlay" aria-hidden="true"></div>
 
   <header>
@@ -1029,6 +1119,19 @@
         <p class="intro">Alles Wichtige auf einen Blick: Termine, Ausflüge oder einfach nur Infos, die wir nicht vergessen dürfen.</p>
 
         <div class="board-grid">
+          
+          <!-- HALLOWEEN EVENT CARD (EZ 17) -->
+          <article class="halloween-card">
+            <div class="halloween-badge">Schul-Event (EZ 17)</div>
+            <h3>Tatort Halloween 🎃</h3>
+            <p>Ein Tag voller Geheimnisse, Spannung und schauriger Überraschungen... Die EZ 17 lädt alle Schülerinnen und Schüler sowie Lehrkräfte zur Halloween-Party ein!</p>
+            <div class="halloween-details">
+              <div><strong>Wann:</strong> 27.10.2026 | 9:30 – 13:30 Uhr</div>
+              <div><strong>Dresscode:</strong> Kostümpflicht!</div>
+              <div><strong>Info:</strong> Für Snacks ist gesorgt!</div>
+            </div>
+          </article>
+
           <article class="sticker-card">
             <img src="sticker.jpeg" alt="KP25-Aufkleber">
             <div>
@@ -1040,7 +1143,6 @@
       </div>
     </section>
 
-    <!-- KOMPLETT NEU STRUKTURIERTER FERIEN-BEREICH -->
     <section class="vacation-section" id="ferien">
       <div class="container">
         <p class="section-label">Durchatmen & Ausruhen</p>
@@ -1048,7 +1150,6 @@
         <p class="intro">Hier findest du den aktuellen Ferien-Countdown und die Übersicht über alle Ferientermine während unserer Ausbildungszeit.</p>
 
         <div class="vacation-grid">
-          <!-- Live Timer Card -->
           <article class="vacation-card" aria-live="polite">
             <div id="vacationStatusBadge" class="vacation-status-badge next-vacation">
               <span>🌴 Next Up</span>
@@ -1082,11 +1183,9 @@
             </div>
           </article>
 
-          <!-- Ferien-Liste (Ersetzt die alte, problematische Tabelle) -->
           <div class="vacation-table-container">
             <h3>Ferienübersicht</h3>
             <div class="vacation-list" id="vacationList">
-              <!-- Dynamisch per JS befüllt -->
             </div>
           </div>
         </div>
@@ -1120,9 +1219,6 @@
   </footer>
 
   <script>
-    /* -------------------------------------------------------------
-       Skript für Ausbildungs-Countdown
-    ------------------------------------------------------------- */
     (() => {
       const start = new Date("2026-08-01T00:00:00+02:00").getTime();
       const end = new Date("2028-07-31T23:59:59+02:00").getTime();
@@ -1160,9 +1256,6 @@
       setInterval(update, 1000);
     })();
 
-    /* -------------------------------------------------------------
-       Skript für Thüringer Schulferien-Timer & Neue Listen-Ansicht
-    ------------------------------------------------------------- */
     const vacations = [
       {
         name: "Variabler Ferientag",
@@ -1249,7 +1342,6 @@
         });
       }
 
-      // Rendert nun das responsive Listen-Grid anstelle einer schwerfälligen Tabelle
       function renderList() {
         const list = document.getElementById("vacationList");
         if (!list) return;
@@ -1314,7 +1406,6 @@
         const hEl = document.getElementById("vHours");
         const mEl = document.getElementById("vMinutes");
 
-        // Klassen zurücksetzen
         vacations.forEach((_, idx) => {
           const row = document.getElementById(`vacation-row-${idx}`);
           if (row) {
@@ -1418,30 +1509,22 @@
       setInterval(updateVacationTimer, 30000); 
     })();
 
-    /* -------------------------------------------------------------
-       Neues Skript für das DYNAMISCHE Saison-Overlay
-       Passt sich je nach echtem Datum (Monat) automatisch an!
-    ------------------------------------------------------------- */
     (() => {
       const overlay = document.getElementById("seasonalOverlay");
       if (!overlay) return;
       
-      const currentMonth = new Date().getMonth(); // 0 = Jan, 11 = Dez
+      const currentMonth = new Date().getMonth(); 
       let items = [];
       
-      // Herbst (Sep, Okt, Nov)
       if (currentMonth >= 8 && currentMonth <= 10) {
         items = ["🍂", "🍁", "🎃"];
       } 
-      // Winter (Dez, Jan, Feb)
       else if (currentMonth === 11 || currentMonth <= 1) {
         items = ["❄️", "⛄", "✨"];
       }
-      // Frühling (Mär, Apr, Mai)
       else if (currentMonth >= 2 && currentMonth <= 4) {
         items = ["🌸", "🌷", "🦋"];
       } 
-      // Sommer (Jun, Jul, Aug)
       else {
         items = ["☀️", "🏖️", "🍉"];
       }
