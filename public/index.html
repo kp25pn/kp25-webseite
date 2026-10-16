@@ -1111,10 +1111,31 @@
       z-index: 1;
     }
 
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+      text-align: right;
+    }
+
+    .footer-credit {
+      color: #718096;
+      font-size: 0.85rem;
+    }
+
+    .footer-credit-heart {
+      display: inline-block;
+      color: var(--green);
+      margin: 0 2px;
+    }
+
     footer a {
       color: #e2e8f0;
       font-weight: 700;
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     footer a:hover {
@@ -1273,6 +1294,11 @@
       .footer {
         align-items: flex-start;
         flex-direction: column;
+        text-align: left;
+      }
+
+      .footer-right {
+        align-items: flex-start;
         text-align: left;
       }
 
@@ -1813,7 +1839,7 @@
         </small>
       </div>
 
-      <div>
+      <div class="footer-right">
         <a
           href="https://www.instagram.com/kp25_pn/"
           target="_blank"
@@ -1821,6 +1847,10 @@
         >
           Instagram @kp25_pn
         </a>
+
+        <div class="footer-credit">
+          Mit <span class="footer-credit-heart" aria-hidden="true">♥️</span> gebaut von <a href="https://siteforge-hosting.pages.dev/" target="_blank" rel="noopener noreferrer">SiteForge</a>
+        </div>
       </div>
 
     </div>
